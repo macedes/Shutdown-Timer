@@ -15,3 +15,20 @@ C:\Users\Geveci\documents\visual studio 2012\Projects\Shutdown Timer\Shutdown Ti
 C:\Users\Geveci\documents\visual studio 2012\Projects\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer.csprojResolveAssemblyReference.cache
 C:\Users\Geveci\documents\visual studio 2012\Projects\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer.exe.manifest
 C:\Users\Geveci\documents\visual studio 2012\Projects\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer.application
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\bin\Debug\Shutdown Timer.exe.config
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer.exe
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer.pdb
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\bin\Debug\Shutdown Timer.exe.manifest
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\bin\Debug\Shutdown Timer.application
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\bin\Debug\Shutdown Timer.exe
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\bin\Debug\Shutdown Timer.pdb
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer.csprojResolveAssemblyReference.cache
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\MainWindow.baml
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\MainWindow.g.cs
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\App.g.cs
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer_MarkupCompile.cache
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer.g.resources
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown_Timer.Properties.Resources.resources
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer.csproj.GenerateResource.Cache
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer.exe.manifest
+C:\Users\Geveci\Documents\GitHub\Shutdown-Timer\Shutdown Timer\Shutdown Timer\obj\Debug\Shutdown Timer.application
