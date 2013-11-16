@@ -29,13 +29,17 @@ namespace Shutdown_Timer
 
         Boolean timerstatus = false;
         Timer ShutdownTimer = new Timer();
+        int selectedValue, currentValue, maxValue;
+        DateTime startTime;
+
+        //Create a Delegate that matches the Signature of the ProgressBar's SetValue method
+        private delegate void UpdateProgressBarDelegate(System.Windows.DependencyProperty dp, Object value);
+        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             if (timerstatus == false)
             {
-
-                Double selectedValue=0;
 
                 if (radio30.IsChecked == true)
                 {
@@ -54,18 +58,23 @@ namespace Shutdown_Timer
                     selectedValue = 0;
                     MessageBox.Show("Fehler");
                 }
-                
+                selectedValue = 1;
+
                 Double IntervallInSeconds = TimeSpan.FromMinutes(selectedValue).TotalMilliseconds;
                 ShutdownTimer.Elapsed += new ElapsedEventHandler(RunEvent);
                 ShutdownTimer.Interval = IntervallInSeconds;
                 ShutdownTimer.Enabled = true;
 
-                // Progress();
 
+                //  DispatcherTimer setup
+                dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+                dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+                dispatcherTimer.Start();
+
+                startTime = DateTime.Now;
                 DateTime endDate = DateTime.Now;
                 endDate = endDate.AddMinutes(selectedValue);
 
-                TimeLabel.Content = endDate.ToString();
                 TimerButton.Content = "Timer stoppen";
                 timerstatus = true;
             }
@@ -74,13 +83,36 @@ namespace Shutdown_Timer
                 TimeLabel.Content = "";
                 ShutdownTimer.Enabled = false;
                 TimerButton.Content = "Timer starten";
-                timerstatus = false ;
+                timerstatus = false;
 
             }
-         }
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            maxValue = Convert.ToInt16(TimeSpan.FromMinutes(selectedValue).TotalSeconds) - 1;
+            TimeSpan elapsedTime = (DateTime.Now - startTime);
+            currentValue = elapsedTime.Seconds;
+            String currentTimerString = Convert.ToString(elapsedTime.ToString("mm':'ss"));
+            TimeLabel.Content = currentTimerString;
+            if (currentValue == maxValue)
+            {
+                dispatcherTimer.Stop();
+                TimeLabel.Content = "";
+                ShutdownTimer.Enabled = false;
+                TimerButton.Content = "Timer starten";
+                timerstatus = false;
+
+            }
+            else
+            {
+                Progress(0, maxValue, currentValue);
+            }
+        }
 
         public void RunEvent(object source, ElapsedEventArgs e)
         {
+            /*
             try
             {
                 foreach (Process proc in Process.GetProcessesByName("dvbviewer"))
@@ -93,42 +125,30 @@ namespace Shutdown_Timer
                 MessageBox.Show(ex.Message);
             }
            Process.Start("shutdown", "/s /t 0");
+            
+             */
+            MessageBox.Show("PC fährt herunter");
             ShutdownTimer.Enabled = false;
         }
 
-        //Create a Delegate that matches the Signature of the ProgressBar's SetValue method
-        private delegate void UpdateProgressBarDelegate(System.Windows.DependencyProperty dp, Object value);
-        
-        private void Progress()
+
+
+        private void Progress(int min, int selectedValue, int current)
         {
             //Configure the ProgressBar
-            ProgressBar1.Minimum = 0;
-            ProgressBar1.Maximum = short.MaxValue;
-            ProgressBar1.Value = 0;
+            ProgressBar1.Minimum = min;
+            ProgressBar1.Maximum = selectedValue;
+            ProgressBar1.Value = current;
 
             //Stores the value of the ProgressBar
-            double value = 0;
+            double value = current;
 
             //Create a new instance of our ProgressBar Delegate that points
             //  to the ProgressBar's SetValue method.
             UpdateProgressBarDelegate updatePbDelegate = new UpdateProgressBarDelegate(ProgressBar1.SetValue);
-
-            //Tight Loop:  Loop until the ProgressBar.Value reaches the max
-            do
-            {
-                value += 1;
-
-                /*Update the Value of the ProgressBar:
-                  1)  Pass the "updatePbDelegate" delegate that points to the ProgressBar1.SetValue method
-                  2)  Set the DispatcherPriority to "Background"
-                  3)  Pass an Object() Array containing the property to update (ProgressBar.ValueProperty) and the new value */
-                Dispatcher.Invoke(updatePbDelegate,
+            Dispatcher.Invoke(updatePbDelegate,
                     System.Windows.Threading.DispatcherPriority.Background,
                     new object[] { ProgressBar.ValueProperty, value });
-
-            }
-            while (ProgressBar1.Value != ProgressBar1.Maximum);
-
         }
     }
 }
