@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Diagnostics;
-using System.Timers;
 
 namespace Shutdown_Timer
 {
@@ -25,19 +13,35 @@ namespace Shutdown_Timer
         public MainWindow()
         {
             InitializeComponent();
+            TimeLabel.Content = "Bitte starten Sie den Timer";
         }
 
         Boolean timerstatus = false;
-        Timer ShutdownTimer = new Timer();
         int selectedValue, currentValue, maxValue;
         DateTime startTime;
 
-        //Create a Delegate that matches the Signature of the ProgressBar's SetValue method
+        /// <summary>
+        /// Erstellt einen Delegate für den ProgressBar
+        /// </summary>
+        /// <param name="dp"></param>
+        /// <param name="value"></param>
         private delegate void UpdateProgressBarDelegate(System.Windows.DependencyProperty dp, Object value);
+
+        /// <summary>
+        /// DispatchTimer wird erzeugt
+        /// </summary>
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+
+
+        /// <summary>
+        /// TimerButton_Click wird nach dem Klicken aufgerufen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TimerButton_Click(object sender, RoutedEventArgs e)
         {
+           
             if (timerstatus == false)
             {
 
@@ -58,50 +62,50 @@ namespace Shutdown_Timer
                     selectedValue = 0;
                     MessageBox.Show("Fehler");
                 }
-                selectedValue = 1;
-
-                Double IntervallInSeconds = TimeSpan.FromMinutes(selectedValue).TotalMilliseconds;
-                ShutdownTimer.Elapsed += new ElapsedEventHandler(RunEvent);
-                ShutdownTimer.Interval = IntervallInSeconds;
-                ShutdownTimer.Enabled = true;
-
-
-                //  DispatcherTimer setup
+    
+                //  DispatcherTimer Setup
                 dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
                 dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
                 dispatcherTimer.Start();
 
                 startTime = DateTime.Now;
-                DateTime endDate = DateTime.Now;
-                endDate = endDate.AddMinutes(selectedValue);
 
                 TimerButton.Content = "Timer stoppen";
                 timerstatus = true;
             }
             else
             {
-                TimeLabel.Content = "";
-                ShutdownTimer.Enabled = false;
+                TimeLabel.Content = "Bitte starten Sie den Timer";
                 TimerButton.Content = "Timer starten";
+                dispatcherTimer.Stop();
+                dispatcherTimer.IsEnabled = false;
+                Progress(0, selectedValue, 0);
                 timerstatus = false;
+                
 
             }
         }
 
+        /// <summary>
+        /// Diese DispatchTimer Methode wird in jeder Sekunde aufgerufen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            maxValue = Convert.ToInt16(TimeSpan.FromMinutes(selectedValue).TotalSeconds) - 1;
+            maxValue = Convert.ToInt16(TimeSpan.FromMinutes(selectedValue).TotalSeconds);
             TimeSpan elapsedTime = (DateTime.Now - startTime);
             currentValue = elapsedTime.Seconds;
             String currentTimerString = Convert.ToString(elapsedTime.ToString("mm':'ss"));
             TimeLabel.Content = currentTimerString;
-            if (currentValue == maxValue)
+            if (currentValue > maxValue)
             {
                 dispatcherTimer.Stop();
                 TimeLabel.Content = "";
-                ShutdownTimer.Enabled = false;
                 TimerButton.Content = "Timer starten";
                 timerstatus = false;
+                Progress(0, maxValue, 0);
+                Shutdown();
 
             }
             else
@@ -110,9 +114,12 @@ namespace Shutdown_Timer
             }
         }
 
-        public void RunEvent(object source, ElapsedEventArgs e)
+        /// <summary>
+        /// Beendet alle Prozesse und fährt den Rechner herunter
+        /// </summary>
+        private void Shutdown()
         {
-            /*
+            
             try
             {
                 foreach (Process proc in Process.GetProcessesByName("dvbviewer"))
@@ -125,27 +132,28 @@ namespace Shutdown_Timer
                 MessageBox.Show(ex.Message);
             }
            Process.Start("shutdown", "/s /t 0");
-            
-             */
-            MessageBox.Show("PC fährt herunter");
-            ShutdownTimer.Enabled = false;
+
         }
 
-
-
+        /// <summary>
+        /// ProgressBar wird aktualisiert
+        /// </summary>
+        /// <param name="min">Anfangswert</param>
+        /// <param name="selectedValue">Maximalwert</param>
+        /// <param name="current">aktueller Wert</param>
         private void Progress(int min, int selectedValue, int current)
         {
-            //Configure the ProgressBar
-            ProgressBar1.Minimum = min;
-            ProgressBar1.Maximum = selectedValue;
-            ProgressBar1.Value = current;
+            //Konfiguriert die ProgressBar
+            ProgressBar.Minimum = min;
+            ProgressBar.Maximum = selectedValue;
+            ProgressBar.Value = current;
 
-            //Stores the value of the ProgressBar
+            //Speichert den Wert der ProgressBar
             double value = current;
 
-            //Create a new instance of our ProgressBar Delegate that points
-            //  to the ProgressBar's SetValue method.
-            UpdateProgressBarDelegate updatePbDelegate = new UpdateProgressBarDelegate(ProgressBar1.SetValue);
+
+            //Erstellt eine neue Instanz auf die ProgressBar Delegate, das auf die SetValue Methode zeigt.
+            UpdateProgressBarDelegate updatePbDelegate = new UpdateProgressBarDelegate(ProgressBar.SetValue);
             Dispatcher.Invoke(updatePbDelegate,
                     System.Windows.Threading.DispatcherPriority.Background,
                     new object[] { ProgressBar.ValueProperty, value });

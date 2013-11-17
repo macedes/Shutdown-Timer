@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Shutdown_Timer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Shutdown Timer" Height="250" Width="300" ResizeMode="NoResize">
+        Title="Shutdown Timer" Height="250" Width="300" ResizeMode="CanMinimize">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110"/>
@@ -15,9 +15,9 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         
-        <Label x:Name="TimeLabel" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="center" FontWeight="Bold" Content="Bitte starten Sie den Timer" FontSize="13"/>
-        <ProgressBar Margin="0,10" Grid.Row="1" Grid.ColumnSpan="2"  Height="15"  Name="ProgressBar1"/>
-        <Button x:Name="TimerButton" Grid.Row="2" Height="50" Content="Timer Starten" Click="Button_Click_1"/>
+        <Label x:Name="TimeLabel" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="center" FontWeight="Bold" Content="" FontSize="20"/>
+        <ProgressBar Margin="0,10" Grid.Row="1" Grid.ColumnSpan="2"  Height="15"  Name="ProgressBar"/>
+        <Button x:Name="TimerButton" Grid.Row="2" Height="50" Content="Timer Starten" Click="TimerButton_Click"/>
         <StackPanel Margin="30,0,0,0" Grid.Row="2" Grid.Column="1">
             <Label FontWeight="Bold">Dauer :</Label>
             <RadioButton Name="radio30" IsChecked="True">30 min</RadioButton>
