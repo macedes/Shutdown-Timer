@@ -62,6 +62,8 @@ namespace Shutdown_Timer
                     selectedValue = 0;
                     MessageBox.Show("Fehler");
                 }
+
+                TimeLabel.Content = "00:00";
     
                 //  DispatcherTimer Setup
                 dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
@@ -95,7 +97,7 @@ namespace Shutdown_Timer
         {
             maxValue = Convert.ToInt16(TimeSpan.FromMinutes(selectedValue).TotalSeconds);
             TimeSpan elapsedTime = (DateTime.Now - startTime);
-            currentValue = elapsedTime.Seconds;
+            currentValue =(int)elapsedTime.TotalSeconds;
             String currentTimerString = Convert.ToString(elapsedTime.ToString("mm':'ss"));
             TimeLabel.Content = currentTimerString;
             if (currentValue > maxValue)
@@ -105,6 +107,7 @@ namespace Shutdown_Timer
                 TimerButton.Content = "Timer starten";
                 timerstatus = false;
                 Progress(0, maxValue, 0);
+                MessageBox.Show("PC wird heruntergefahren");
                 Shutdown();
 
             }
