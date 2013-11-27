@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Shutdown Timer.exe" version="1.0.0.4" publicKeyToken="dee9a9a2f7fab77a" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Shutdown Timer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Shutdown Timer.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC-Manifestoptionen
+          Wenn Sie die Zugangsebene für das Windows-Benutzerkonto ändern möchten, ersetzen Sie den 
+          requestedExecutionLevel-Knoten durch eines der folgenden Elemente.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Löschen Sie den requestedExecutionLevel-Knoten, wenn Sie 
+         zum Gewährleisten der Abwärtskompatibilität die Datei- und Registrierungsvirtualisierung verwenden möchten.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Shutdown Timer.exe" size="12288">
+      <assemblyIdentity name="Shutdown Timer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>s536swuYxU43G2a8ZRjO4c0N+0goHoerJolsUlC0Sow=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Shutdown Timer.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=Geveci-PC\Geveci" issuerKeyHash="c4533f0ad948bfb06afc2781195521786b7986ef" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>egYdemlQ7EpGTrDb2MT77d7YYfzSHqa1Z2Ay58WmYwg=</DigestValue></Reference></SignedInfo><SignatureValue>EnFR4dIwZzCSDh4vVlm2y1P5eOXs18uhfDcrU2KT43vpnnHvVCxqN7pc7i/3jc+ofYlXwO93LtRtTv32pFzUckWT1I7jXcL+p8CaUKGrzBOkmp4FOJw98rIMeFkCvqRauCXpgUBq+hOn+KDiQeImUaXk1pQxAIZZJ3PQNZyeJEg=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>ziPcvNUKKmof0Gr85sTLhyRHIBs4BsuyooScu8BCra9jAMYJjaDCxNFNumvI8igArmYBw2KfAFMHI18OszRf3VpfO8xMUWhzEh3KnxSfdasE1BMogyiocBhL6x3yssjKv+uiNrtkCjiHTmaaWrPeDcaWPq2AbmAJcVDi61n4188=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="0863a6c5e7326067b5a61ed2fc61d8deedfbc4d8dbb04e464aec50697a1d067a" Description="" Url=""><as:assemblyIdentity name="Shutdown Timer.exe" version="1.0.0.4" publicKeyToken="dee9a9a2f7fab77a" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Geveci-PC\Geveci</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>m8KrnD4uG+J2AuQPYV32zS7of9aR3A1Nmrx1KI6Ehl4=</DigestValue></Reference></SignedInfo><SignatureValue>wIOfqj2Cos3RZlRzbdGqFFk764WmvEj7SQZPotvFzNfA9xRNzjbpbxHeMU0JY1bj8UqYZA0/O+vBeKdVRNh8CB4o8A3/0MDophweqqbsH492oEyYeTnuq004Daw+kDhOKKAoInSSU/G2GHNnx/6WZnQDKnX6vreY/eV9qb6UoHE=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>ziPcvNUKKmof0Gr85sTLhyRHIBs4BsuyooScu8BCra9jAMYJjaDCxNFNumvI8igArmYBw2KfAFMHI18OszRf3VpfO8xMUWhzEh3KnxSfdasE1BMogyiocBhL6x3yssjKv+uiNrtkCjiHTmaaWrPeDcaWPq2AbmAJcVDi61n4188=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB2TCCAUKgAwIBAgIQUeoGu+zpCIZD+Rzka32//TANBgkqhkiG9w0BAQsFADArMSkwJwYDVQQDHiAARwBlAHYAZQBjAGkALQBQAEMAXABHAGUAdgBlAGMAaTAeFw0xMzExMDYyMDA0NTdaFw0xNDExMDcwMjA0NTdaMCsxKTAnBgNVBAMeIABHAGUAdgBlAGMAaQAtAFAAQwBcAEcAZQB2AGUAYwBpMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOI9y81Qoqah/QavzmxMuHJEcgGzgGy7KihJy7wEKtr2MAxgmNoMLE0U26a8jyKACuZgHDYp8AUwcjXw6zNF/dWl87zExRaHMSHcqfFJ91qwTUEyiDKKhwGEvrHfKyyMq/66I2u2QKOIdOZppas94NxpY+rYBuYAlxUOLrWfjXzwIDAQABMA0GCSqGSIb3DQEBCwUAA4GBADf9i4n75nJmMXSAQ0SPDX8O7E+i+s/u2Ytf6SP1gsd3GIpG7y25aHdgYZKAuOVM2xk6OeOirv6P/2UQ2yzKjDAfa2SweLhjIYA+1UZNxWH2B17MOt9Wc1eI21WMWEnW8Ycl7BD7qqrXDg1t64DBLxY6a9ojGvwZmGdyw7o8ti6R</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

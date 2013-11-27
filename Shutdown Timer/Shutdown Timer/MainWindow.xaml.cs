@@ -107,7 +107,6 @@ namespace Shutdown_Timer
                 TimerButton.Content = "Timer starten";
                 timerstatus = false;
                 Progress(0, maxValue, 0);
-                MessageBox.Show("PC wird heruntergefahren");
                 Shutdown();
 
             }
